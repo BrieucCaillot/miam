@@ -1,0 +1,37 @@
+.button, button {
+  font-size: 1.2rem;
+  border-radius: 5px;
+  line-height: 28px;
+  &__bdr-none {
+    border: none !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+  &:disabled {
+    background-color: #463518;
+    &:hover {
+      color: map-get($colors, white);
+      background-color: #463518;
+    }
+  }
+  &:focus {
+    border: none;
+    color: map-get($colors, white);
+  }
+  &.active, &:hover {
+    background-color: $primary;
+    span {
+      color: map-get($colors, white);
+    }
+  }
+  &__big {
+    position: relative;
+    height: 2.5rem;
+    min-width: 2.5rem;
+  }
+  &__small {
+    position: relative;
+    height: 2rem;
+    min-width: 2rem;
+  }
+}

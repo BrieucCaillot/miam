@@ -1,0 +1,74 @@
+.icon {
+  &__account {
+    background: url('../img/account.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__cart {
+    background: url('../img/cart.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__location {
+    background: url('../img/location.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__time {
+    background: url('../img/time.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__add {
+    background: url('../img/add.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__remove {
+    background: url('../img/remove.svg') no-repeat center center;
+    background-size: contain;
+    height: 80%;
+    width: 80%;
+  }
+  &__drag {
+    background: url('../img/drag.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__back1 {
+    background: url('../img/arrow-back1.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__back2 {
+    background: url('../img/arrow-back2.svg') no-repeat center center;
+    background-size: contain;
+    height: 60%;
+    width: 60%;
+  }
+  &__facebook {
+    background: url('../img/facebook.svg') no-repeat;
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+  }
+  &__twitter {
+    background: url('../img/twitter.svg') no-repeat;
+    background-size: cover;
+    height: 23px;
+    width: 25px;
+  }
+  &__instagram {
+    background: url('../img/instagram.svg') no-repeat;
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+  }
+}

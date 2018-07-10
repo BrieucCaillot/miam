@@ -1,0 +1,66 @@
+.page-content-info {
+  height: 100vh;
+  &__left {
+    &__img {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__right {
+    padding: 20px 60px;
+    @media screen and (max-width: $tablet) {
+      padding: 10px;
+    }
+    @extend .container;
+    overflow-y: scroll;
+  }
+  &__back {
+    &:before {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 5px;
+      @extend .icon__back1;
+    }
+    &:hover {
+      &:before {
+        @extend .icon__back2;
+        @include animation(arrow-back, .5s, 0, backwards, 1, easy-in-out);
+      }
+    }
+  }
+}
+
+#signup {
+  .page-content-info {
+    &__left {
+      &__img {
+        background: url("../img/sign-up.jpg") no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}
+#signin {
+  .page-content-info {
+    &__left {
+      &__img {
+        background: url("../img/sign-in.jpg") no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}
+
+#modify {
+  .page-content-info {
+    &__left {
+      &__img {
+        background: url("../img/modify.jpg") no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}

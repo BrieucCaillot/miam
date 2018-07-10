@@ -1,0 +1,37 @@
+$size-header: 50px;
+$size: 40px;
+.input {
+  height: $size;
+  border-radius: 0;
+  font-family: inherit;
+  padding-top: 6px;
+  color: map-get($colors, secondary);
+  &:focus {
+    box-shadow: none;
+  }
+  &::placeholder {
+    color: map-get($colors, black);
+    opacity: 0.3;
+  }
+  &__header-top {
+    height: $size-header;
+    border: none;
+  }
+  &__form {
+    &__icon-before__container {
+      background-color: $primary;
+      min-width: $size-header;
+      height: $size-header;
+      &__icon-localisation {
+        @extend .icon__location;
+        height: 25px;
+        width: 25px;
+      }
+      &__icon-time {
+        @extend .icon__time;
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}

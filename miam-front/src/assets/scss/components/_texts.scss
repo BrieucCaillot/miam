@@ -1,0 +1,50 @@
+.text {
+  &__is-white {
+    color: map_get($colors, white);
+  }
+
+  &__is-black {
+    color: map_get($colors, black);
+  }
+
+  &__is-primary {
+    color: $primary;
+  }
+
+  &__is-secondary {
+    color: map_get($colors, secondary);
+  }
+
+  &__is-tertiary {
+    color: map_get($colors, tertiary);
+  }
+
+  &__title {
+
+  }
+
+  &__ft-1 {
+    font-family: 'Avenir';
+    font-weight: 100;
+    &__title {
+      font-family: 'Avenir';
+      font-weight: 700;
+    }
+  }
+
+  &__ft-2 {
+    font-family: 'Walbaum';
+  }
+}
+
+.title {
+  font-weight: initial;
+}
+
+a {
+  &.text__is-white {
+    &:hover {
+      @extend .text__is-white;
+    }
+  }
+}

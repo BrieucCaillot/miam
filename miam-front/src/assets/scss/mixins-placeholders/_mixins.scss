@@ -1,0 +1,43 @@
+//Globals
+@mixin custom-img($scale, $margin) {
+  transform: scale($scale);
+  margin: $margin;
+}
+
+@mixin transition($property, $time) {
+  -webkit-transition: $property $time;
+  -moz-transition: $property $time;
+  -ms-transition: $property $time;
+  -o-transition: $property $time;
+  transition: $property $time;
+}
+
+@mixin animation ($animation, $duration ,$delay, $mode, $count, $timing) {
+  -webkit-animation-name: $animation; // animation name
+  -webkit-animation-duration: $duration; // duration (ex: 1sec)
+  -webkit-animation-delay: $delay; // delay (ex: 1sec)
+  -webkit-animation-fill-mode: $mode; // mode (ex: forwards)
+  -webkit-animation-iteration-count: $count; // count (ex: infinite)
+  -webkit-animation-timing-function: $timing; // timing (ex: ease-in-out);
+
+  -moz-animation-name: $animation;
+  -moz-animation-duration: $duration;
+  -moz-animation-delay: $delay;
+  -moz-animation-fill-mode: $mode;
+  -moz-animation-iteration-count: $count;
+  -moz-animation-timing-function: $timing;
+
+  -o-animation-name: $animation;
+  -o-animation-duration: $duration;
+  -o-animation-delay: $delay;
+  -o-animation-fill-mode: $mode;
+  -o-animation-iteration-count: $count;
+  -o-animation-timing-function: $timing;
+
+  animation-name: $animation;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: $mode;
+  animation-iteration-count: $count;
+  animation-timing-function: $timing;
+}

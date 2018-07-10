@@ -1,0 +1,35 @@
+.log {
+  display: none;
+  &__error {
+    display: block;
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    p {
+      color: red;
+    }
+  }
+  &__success {
+    display: block;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 10px;
+    p {
+      color: green;
+    }
+  }
+}
+
+.input-splitted {
+  @media screen and (min-width: $tablet) {
+    .level-left, .level-right {
+      width: 48%;
+    }
+  }
+  @media screen and (max-width: $tablet) {
+    .level-right {
+      margin-top: 20px;
+    }
+  }
+}
+

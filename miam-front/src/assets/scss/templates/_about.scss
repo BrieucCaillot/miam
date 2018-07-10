@@ -1,0 +1,30 @@
+#about {
+  .about-content {
+    &__right {
+      @media screen and (max-width: $tablet) {
+        display: flex;
+        flex-direction: column-reverse;
+        .column:last-child {
+          width: 100%;
+        }
+      }
+      p {
+        @media screen and (min-width: $tablet) {
+          direction: rtl;
+        }
+      }
+    }
+    &__img {
+      background-color: red;
+      height: 400px;
+      &__first {
+        background: url('../../assets/img/about1.jpg') no-repeat center center;
+        background-size: cover;
+      }
+      &__second {
+        background: url('../../assets/img/about2.png') no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}

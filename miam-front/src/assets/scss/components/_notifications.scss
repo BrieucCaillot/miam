@@ -1,0 +1,32 @@
+.notifications {
+  margin-top: 70px;
+  margin-right: 10px;
+}
+.vue-notification {
+  padding: 20px !important;
+  margin: 0 5px 5px;
+  color: #ffffff;
+
+  .notification-title {
+    font-size: 18px;
+  }
+
+  .notification-content {
+    font-size: 15px;
+  }
+
+  &.warn {
+    border-left-color: map-get($colors, secondary) !important;
+    background-color: map-get($colors, white) !important;
+  }
+
+  &.error {
+    background: #E54D42;
+    border-left-color: #B82E24;
+  }
+
+  &.success {
+    border-left-color: map-get($colors, secondary) !important;
+    background-color: $primary !important;
+  }
+}

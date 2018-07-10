@@ -1,0 +1,10 @@
+.orders {
+  &__in-progress {
+    &:before {
+      content: '';
+      height: auto;
+      width: 5px;
+      background-color: map-get($colors, secondary);
+    }
+  }
+}
