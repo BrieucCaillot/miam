@@ -56,6 +56,8 @@ vim .env
 
 # url used to request with backend
 URL_DEV=
+
+# stripe public key
 STRIPE_PUBLIC_KEY=
 ```
 
