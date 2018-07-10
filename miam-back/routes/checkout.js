@@ -6,7 +6,6 @@ var moment = require('moment');
 var router = express.Router();
 var database = require('../services/database.js');
 var stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-// @TODO ADD .ENV VARIABLE
 
 let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 console.log(myDate)

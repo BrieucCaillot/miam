@@ -55,7 +55,8 @@ vim .env
 # .env config
 
 # url used to request with backend
-URL_DEV=http://localhost:3000/
+URL_DEV=
+STRIPE_PUBLIC_KEY=
 ```
 
 ## miam-back
