@@ -80,7 +80,7 @@
                             <div class="level">
                                 <div class="level-item">
                                     <router-link
-                                            class="button button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-secondary"
+                                            class="button cpointer button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-secondary"
                                             :to="{name: 'BuyStep1'}">
                                         Valider la commande
                                     </router-link>

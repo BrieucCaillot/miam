@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="columns is-vcentered">
+                    <div class="columns">
                         <div class="column">
                             <div class="confirm-left">
                                 <div class="level pd-t1">
@@ -84,13 +84,13 @@
                                             :to="{name: 'Home'}">
                                         Annuler
                                     </router-link>
-                                    <button type="submit" class="button button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-secondary">
+                                    <button type="submit" class="button cpointer button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-secondary">
                                         Confirmer le paiement
                                     </button>
                                 </div>
                                 <div v-else class="level-item">
                                     <button type="button" @click.stop="resetDelivery"
-                                            class="button button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-primary">
+                                            class="button cpointer button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-primary">
                                         Voir ma commande
                                     </button>
                                 </div>
