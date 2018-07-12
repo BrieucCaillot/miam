@@ -7,11 +7,15 @@
                     <div class="columns pd-b2">
                         <div class="column">
                             <div class="level">
-                                <div class="level-left">
-                                    <router-link class="text__is-tertiary page-content-info__back p-rel pd-l3"
-                                                 :to="{name: 'Home'}">
+                                <div v-if="confirmed == false" class="level-left">
+                                    <a @click="resetValidate" class="text__is-tertiary page-content-info__back p-rel pd-l3">
+                                        Retour à la validation
+                                    </a>
+                                </div>
+                                <div v-else class="level-left">
+                                    <a @click="resetValidate" class="text__is-tertiary page-content-info__back p-rel pd-l3">
                                         Retour à la carte du jour
-                                    </router-link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +26,7 @@
                             <div class="column">
                                 <div class="level">
                                     <div class="level-item">
-                                        <h1 class="is-size-3 text__ft-2 text__is-secondary">
+                                        <h1 class="confirm-title is-size-3 text__ft-2 text__is-secondary">
                                             Confirmer le paiement
                                         </h1>
                                     </div>
@@ -176,6 +180,10 @@
 						this.$router.push({name: 'Orders'})
 					})
 			},
+            resetValidate() {
+	            this.checkoutValidateAction(false)
+	            this.$router.push({name: 'BuyStep1'})
+            },
 			sendToken() {
 				this.$http.post(`${process.env.URL_DEV}checkout`, {
 					token: this.user.token,

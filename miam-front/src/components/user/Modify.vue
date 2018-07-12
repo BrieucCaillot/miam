@@ -10,8 +10,8 @@
                     <div class="level">
                         <div class="level-left"></div>
                         <div class="level-right">
-                            <div class="level-item">
-                                    <router-link class="button mg-r2 button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-primary"
+                            <div class="level-item page-content-info__right__buttons">
+                                    <router-link class="button page-content-info__right__buttons__left mg-r2 button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-primary"
                                         :to="{name: 'Orders'}" tag="button">
                                     Mes commandes
                                     </router-link>

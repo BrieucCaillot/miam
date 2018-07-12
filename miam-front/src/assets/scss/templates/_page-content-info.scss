@@ -15,6 +15,15 @@
     }
     @extend .container;
     overflow-y: scroll;
+    &__buttons {
+      @media screen and (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        &__left {
+          margin: 0 0 20px 0;
+        }
+      }
+    }
   }
   &__back {
     &:before {

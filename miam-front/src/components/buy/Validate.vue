@@ -81,7 +81,7 @@
 				if (this.delivery.modified && this.productCard.length > 0 && !this.user.token == "") {
 					this.$router.push({name: 'BuyStep1'})
                 } else {
-					this.$router.push({name: 'SignIn'})
+					this.$router.push({name: 'Home'})
                 }
 			}
 		},

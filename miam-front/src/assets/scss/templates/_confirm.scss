@@ -1,9 +1,12 @@
-.confirm-left {
-  max-width: 50%;
-  margin: auto;
+.confirm-title {
+  @media screen and (max-width: $tablet){
+    margin-right: auto;
+  }
 }
-
-.confirm-right {
+.confirm-left, .confirm-right {
   max-width: 50%;
   margin: auto;
+  @media screen and (max-width: $tablet) {
+    max-width: initial;
+  }
 }
