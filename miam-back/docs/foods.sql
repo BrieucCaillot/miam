@@ -250,14 +250,14 @@ VALUES (34, 'images/5db7adb5344e463c95011c3023a984e1.jpg');
 /* APÉROS */
 /* FIRST APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Jambon sec affiné 12 mois Sept Monts', 'Du jambon cru de porc fermier du Sud Ouest, affiné 12 mois en séchoir naturel puis tranché à la main.', 'portion 60g', 4.70, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Jambon sec affiné 12 mois Sept Monts', 'Du jambon cru de porc fermier du Sud Ouest, affiné 12 mois en séchoir naturel puis tranché à la main.', 'portion 60 g', 4.70, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (35, 'images/jdhziioekjdjk2lj3.jpg');
 
 /* SECOND APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Dips de légumes à croquer', 'Des bâtonnets de carotte et des morceaux de chou-fleur croquants !', 'portion 300g', 4.90, 1, 12, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Dips de légumes à croquer', 'Des bâtonnets de carotte et des morceaux de chou-fleur croquants !', 'portion 300 g', 4.90, 1, 12, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (36, 'images/heoikjakjkjz8djaz.jpg');
@@ -271,7 +271,7 @@ VALUES (37, 'images/umzmomouzjksz6djzi.jpg');
 
 /* FOURTH APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Cheddar anglais', 'Du véritable cheddar fermier affiné 12 à 15 mois, fabriqué à partir de lait venant de vaches broutant dans les prés proches de la Cornouaille. ', 'portion 40g', 2.60, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Cheddar anglais', 'Du véritable cheddar fermier affiné 12 à 15 mois, fabriqué à partir de lait venant de vaches broutant dans les prés proches de la Cornouaille. ', 'portion 40 g', 2.60, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (38, 'images/oihzliudlizks4jd7.jpg');
@@ -285,21 +285,21 @@ VALUES (39, 'images/tyckulvuoldjd6djz1.jpg');
 
 /* SIXTH APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Rocamadour crémier AOP', 'Un beau rocamadour au lait cru, moelleux, crémeux et goûtu. Sa saveur unique s''affirme nettement avec le temps.', 'portion 40g', 2.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Rocamadour crémier AOP', 'Un beau rocamadour au lait cru, moelleux, crémeux et goûtu. Sa saveur unique s''affirme nettement avec le temps.', 'portion 40 g', 2.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (40, 'images/dmiozlhifiuz5.jpg');
 
 /* SEVENTH APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Saucisse sèche', 'Une saucisse sèche artisanale affinée pendant un mois et demi en séchoir naturel montagnier.', 'poids 240g', 7.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Saucisse sèche', 'Une saucisse sèche artisanale affinée pendant un mois et demi en séchoir naturel montagnier.', 'poids 240 g', 7.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (41, 'images/jhhzus6shzj.jpg');
 
 /* HEIGHTH APÉRO */
 INSERT INTO foods (foodCategoryId, name, description, subdescription, price, available, quantity, createdAt, updatedAt)
-VALUES (6, 'Tomates cerises gorgées de soleil ', 'Des tomates bio du sud de la France qui ont mûri au soleil !', 'portion 170g', 2.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
+VALUES (6, 'Tomates cerises gorgées de soleil ', 'Des tomates bio du sud de la France qui ont mûri au soleil !', 'portion 170 g', 2.30, 1, 13, '2018-06-08 13:00:00', '2018-06-10 15:00:00');
 
 INSERT INTO images (foodsId, image)
 VALUES (42, 'images/aneuisuajhs5dz1.jpg');
