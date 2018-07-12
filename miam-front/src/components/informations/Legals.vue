@@ -68,8 +68,6 @@
                     </div>
                     <div class="level">
                         <p>
-                            Marque et logo : « Miam » est une marque déposée et protégée.
-                            <br><br>
                             La société Miam détient, se réserve et conserve tous les droits de propriété, notamment
                             intellectuelle, y compris les droits de reproduction sur le présent site et les éléments
                             qu’il contient. En conséquence et notamment toute reproduction partielle ou totale du

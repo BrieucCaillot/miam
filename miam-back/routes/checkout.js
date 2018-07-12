@@ -44,7 +44,6 @@ router.post('/', function (req, res, next) {
 						database.sendQuery(sql, function (err, results) {
 							if (err) throw err;
 							if (results.length > 0) {
-								console.log(myDate)
 								let sql = "INSERT INTO orders (userId, price, status, address, time, createdAt, updatedAt) VALUES ('" + req.body.token + "', '" + req.body.totalPrice + "', 1, '" + req.body.address.replace("'", "''") + "', '" + moment(new Date()).format("YYYY-MM-DD") + " " + time +  "', '" + myDate +  "', '" + myDate +  "');"
 								database.sendQuery(sql, function (err, results) {
 									if (err) {

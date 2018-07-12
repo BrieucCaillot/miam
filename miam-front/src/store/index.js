@@ -1,8 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import index from "../router";
+import VuexPersist from 'vuex-persist';
 
 Vue.use(Vuex)
+
+const vuexLocalStorage = new VuexPersist({
+	key: 'vuex',
+	storage: window.localStorage,
+	reducer: (state) => ({
+		user: state.user,
+		// productsCard: state.productsCard,
+		delivery: state.delivery
+	}),
+})
 
 const state = {
 	user: {
@@ -14,20 +24,18 @@ const state = {
 	},
 	productCategories: [],
 	products: [],
+	productsCard: [],
 	card: {
 		show: false,
 		validate: false,
 		confirmed: false
 	},
-	informations: {
-		delivery: {
-			address: "Remplir une adresse",
-			time: "Remplir un délai de livraison",
-			modified: false
-		},
+	delivery: {
+		address: "",
+		time: "",
+		modified: false
 	},
 	stripeToken: {},
-	productsCard: [],
 }
 
 const getters = {
@@ -38,7 +46,7 @@ const getters = {
 		return state.card.show
 	},
 	delivery(state) {
-		return state.informations.delivery
+		return state.delivery
 	},
 	productCard(state) {
 		return state.productsCard
@@ -78,9 +86,9 @@ const mutations = {
 		state.user.email = payload.email
 	},
 	DELIVERY_INFORMATIONS: (state, payload) => {
-		state.informations.delivery.address = payload.address
-		state.informations.delivery.time = payload.time
-		state.informations.delivery.modified = payload.modified
+		state.delivery.address = payload.address
+		state.delivery.time = payload.time
+		state.delivery.modified = payload.modified
 	},
 	RESET_CARD: (state, payload) => {
 		state.productsCard = payload
@@ -182,6 +190,7 @@ export const store = new Vuex.Store({
 	state,
 	getters,
 	mutations,
-	actions
+	actions,
+	plugins: [vuexLocalStorage.plugin]
 })
 

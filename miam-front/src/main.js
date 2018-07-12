@@ -6,7 +6,6 @@ import router from './router'
 import {store} from "./store";
 import Notifications from 'vue-notification'
 import './assets/css/app.css'
-
 import axios from 'axios';
 
 Vue.use(Notifications)
@@ -22,4 +21,5 @@ var vm = new Vue({
 	template: '<App/>'
 })
 
-global.vx = vm
+// Develop
+// global.vx = vm

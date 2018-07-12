@@ -12,7 +12,7 @@
                         <div class="level-right">
                             <div class="level-item">
                                     <router-link class="button mg-r2 button__bdr-none pd-l3 pd-r3 text__is-white text__ft-2 background__is-primary"
-                                        :to="{name: 'Orders'}">
+                                        :to="{name: 'Orders'}" tag="button">
                                     Mes commandes
                                     </router-link>
                                     <button @click.prevent="logout"
@@ -123,9 +123,11 @@
 
 <script>
 
+	import Mixins from '@/mixins/mixins'
 	import {mapGetters, mapActions} from 'vuex'
 
 	export default {
+		mixins: [Mixins],
 		name: "Modify",
 		data() {
 			return {
@@ -148,14 +150,6 @@
 			...mapActions([
 				'userConnectedAction',
 			]),
-			logout() {
-				let user = {
-					connected: false,
-					token: '',
-				}
-				this.userConnectedAction(user)
-				this.$router.push({name: 'Home'})
-			},
 			modifyUser() {
 				this.$http.post(`${process.env.URL_DEV}user/modify`, {
 					id: this.user.token,

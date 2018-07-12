@@ -1,13 +1,16 @@
 $size-header: 50px;
 $size: 40px;
 .input {
-  height: $size;
+  height: 43px;
   border-radius: 0;
   font-family: inherit;
-  padding-top: 6px;
+  box-shadow: none;
+  padding: 13px 10px 10px 10px;
+  //border: 1px solid map-get($colors, secondary);
   color: map-get($colors, secondary);
   &:focus {
     box-shadow: none;
+    border: 1px solid $primary;
   }
   &::placeholder {
     color: map-get($colors, black);
@@ -16,6 +19,10 @@ $size: 40px;
   &__header-top {
     height: $size-header;
     border: none;
+    &:focus {
+      box-shadow: none;
+      border: none
+    }
   }
   &__form {
     &__icon-before__container {

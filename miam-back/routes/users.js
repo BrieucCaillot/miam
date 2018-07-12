@@ -6,27 +6,6 @@ var database = require('../services/database.js');
 
 let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
-// router.get('/test', function (req, res, next) {
-// 	if (sessionData != undefined) {
-// 		res.json({
-// 			sessionData: sessionData
-// 		})
-// 	} else {
-// 		res.json({
-// 			message: 'Not connected'
-// 		})
-// 	}
-// });
-
-// router.post('/logout', function (req, res, next) {
-// 	if (sessionData != undefined) {
-// 		sessionData = undefined
-// 	}
-// 	res.json({
-// 		logout: true
-// 	})
-// });
-
 router.post('/signin', function (req, res, next) {
 	if (!req.body.id == "") {
 		res.json({
@@ -176,23 +155,6 @@ router.post('/modify', function (req, res, next) {
 		res.json('Nope')
 	}
 });
-
-// router.get('/modify', function (req, res, next) {
-// 	console.log(sessionData.token)
-// 	if (sessionData != undefined) {
-// 		let sql = 'SELECT * FROM `users` WHERE `id` = "' + sessionData.token + '";';
-// 		database.sendQuery(sql, function (err, results) {
-// 			if (err) {
-// 				console.log(err)
-// 			} else {
-// 				res.json(results)
-// 			}
-// 		})
-// 	} else {
-// 		res.json('Nope')
-// 	}
-//
-// });
 
 router.post('/orders', function (req, res, next) {
 	if (!req.body.id == "") {

@@ -45,7 +45,7 @@
                 <div class="modal__card__informations pd-t2">
                     <div class="columns is-vcentered modal__card__informations__delivery">
                         <div class="column pd0">
-                            <label for="search-location-input" @click="toggleModal" class="level is-mobile">
+                            <label  v-if="!delivery.address == ''" for="search-location-input" @click="toggleModal" class="level is-mobile">
                                 <div class="button__big background__is-primary cpointer cprel">
                                     <span class="icon__location dblock p-center"></span>
                                 </div>
@@ -53,12 +53,28 @@
                                     {{ delivery.address }}
                                 </p>
                             </label>
-                            <label for="search-time-input" @click="toggleModal" class="level is-mobile pd-t1">
+                            <label  v-else for="search-location-input" @click="toggleModal" class="level is-mobile">
+                                <div class="button__big background__is-primary cpointer cprel">
+                                    <span class="icon__location dblock p-center"></span>
+                                </div>
+                                <p class=" full-w has-text-left pd-l1 cpointer">
+                                    Remplir une adresse
+                                </p>
+                            </label>
+                            <label v-if="!delivery.time == []" for="search-time-input" @click="toggleModal" class="level is-mobile pd-t1">
                                 <div class="button__big background__is-primary cpointer p-rel">
                                     <span class="icon__time dblock p-center"></span>
                                 </div>
                                 <p class=" full-w has-text-left pd-l1 cpointer">
                                     {{ delivery.time }}
+                                </p>
+                            </label>
+                            <label v-else for="search-time-input" @click="toggleModal" class="level is-mobile pd-t1">
+                                <div class="button__big background__is-primary cpointer p-rel">
+                                    <span class="icon__time dblock p-center"></span>
+                                </div>
+                                <p class=" full-w has-text-left pd-l1 cpointer">
+                                    Remplir un délai de livraison
                                 </p>
                             </label>
                         </div>
