@@ -7,7 +7,10 @@ Vue.use(Vuex)
 const state = {
 	user: {
 		connected: false,
-		token: ""
+		token: "",
+		firstname: "",
+		lastname: "",
+		email: "",
 	},
 	productCategories: [],
 	products: [],
@@ -70,11 +73,17 @@ const mutations = {
 	USER_CONNECTED: (state, payload) => {
 		state.user.connected = payload.connected
 		state.user.token = payload.token
+		state.user.firstname = payload.firstname
+		state.user.lastname = payload.lastname
+		state.user.email = payload.email
 	},
 	DELIVERY_INFORMATIONS: (state, payload) => {
 		state.informations.delivery.address = payload.address
 		state.informations.delivery.time = payload.time
 		state.informations.delivery.modified = payload.modified
+	},
+	RESET_CARD: (state, payload) => {
+		state.productsCard = payload
 	},
 	ADD_PRODUCT: (state, payload) => {
 		let newProduct = 0
@@ -133,6 +142,9 @@ const actions = {
 	},
 	deliveryInformationsAction: ({commit}, payload) => {
 		commit('DELIVERY_INFORMATIONS', payload)
+	},
+	resetCardAction: ({commit}, payload) => {
+		commit('RESET_CARD', payload)
 	},
 	addProductAction: ({commit}, payload) => {
 		commit('ADD_PRODUCT', payload)

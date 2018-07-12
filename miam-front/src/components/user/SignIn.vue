@@ -116,15 +116,17 @@
 							if (response.data.connected === true) {
 								let user = {
 									connected: response.data.connected,
-									token: response.data.token
+									token: response.data.token,
+									firstname: response.data.firstname,
+									lastname: response.data.lastname,
+									email: response.data.email,
 								}
 								this.userConnectedAction(user)
 								this.$router.push({name: 'Home'})
 							} else {
 								this.responses = response.data.message
 								if (this.responses.length > 0) {
-									let substring = 'Bravo';
-									if (response.data.message.includes(substring)) {
+									if (response.data.type == 'success') {
 										document.querySelector('.log').classList.add('log__success');
 										document.querySelector('.log').classList.remove('log__error');
 									} else {
@@ -142,9 +144,6 @@
 					})
 			},
 			checkConnected() {
-				console.log(this.user.connected)
-				console.log(!this.user.token == "")
-				console.log(this.user)
 				if (this.user.connected && !this.user.token == "") {
 					this.$router.push({name: 'Modify'})
 				} else {

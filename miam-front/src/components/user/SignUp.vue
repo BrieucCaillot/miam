@@ -157,15 +157,17 @@
 							if (response.data.connected) {
 								let user = {
 									connected: true,
-									token: response.data.token
+									token: response.data.token,
+									firstname: response.data.firstname,
+									lastname: response.data.lastname,
+									email: response.data.email,
 								}
 								this.userConnectedAction(user)
 								setTimeout(() => {
 									this.$router.push({name: 'Home'})
 								}, 3000)
 							}
-							let substring = 'Bravo';
-							if (response.data.message.includes(substring)) {
+							if (response.data.type == 'success') {
 								document.querySelector('.log').classList.add('log__success');
 								document.querySelector('.log').classList.remove('log__error');
 							} else {

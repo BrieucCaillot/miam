@@ -132,11 +132,12 @@
 					})
 			},
 			getOrders() {
-				this.$http.get(`${process.env.URL_DEV}user/orders`)
+				this.$http.post(`${process.env.URL_DEV}user/orders`, {
+					id: this.user.token
+                })
 					.then(response => {
 						this.errors = []
 						this.orders = response.data
-                        console.log(this.orders)
 					})
 					.catch((error) => {
 						this.errors = []

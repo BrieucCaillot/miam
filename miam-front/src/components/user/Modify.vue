@@ -158,6 +158,7 @@
 			},
 			modifyUser() {
 				this.$http.post(`${process.env.URL_DEV}user/modify`, {
+					id: this.user.token,
 					firstname: this.firstname,
 					lastname: this.lastname,
 					email: this.email,
@@ -181,19 +182,9 @@
 					})
 			},
 			getUserInfos() {
-				this.$http.get(`${process.env.URL_DEV}user/modify`)
-					.then((response) => {
-						this.errors = []
-						let data = response.data[0]
-						this.firstname = data.firstname;
-						this.lastname = data.lastname;
-						this.email = data.email;
-					})
-					.catch((error) => {
-						this.errors = []
-						this.errors.push(error)
-						console.log(error)
-					})
+				this.firstname = this.user.firstname
+				this.lastname = this.user.lastname
+				this.email = this.user.email
 			},
 			checkConnected() {
 				if (this.user.connected && !this.user.token == "") {

@@ -8,7 +8,7 @@ var database = require('../services/database.js');
 var stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-console.log(myDate)
+
 router.post('/', function (req, res, next) {
 	let stripeToken = req.body.stripeToken;
 	let time = req.body.time.split("h").join(':')
@@ -18,7 +18,7 @@ router.post('/', function (req, res, next) {
 	// console.log(req.body.address);
 	// console.log(req.body.address.replace("'", "''"))
 	// console.log(time)
-	let sql = "SELECT `id`, `email` FROM `users` WHERE `id` LIKE '" + req.body.userId + "';"
+	let sql = "SELECT `id`, `email` FROM `users` WHERE `id` LIKE '" + req.body.token + "';"
 	database.sendQuery(sql, function (err, results) {
 		if (err) throw err;
 		if (results.length > 0) {
@@ -40,12 +40,12 @@ router.post('/', function (req, res, next) {
 				}).then((charge) => {
 					console.log('status', charge.status)
 					if (charge.status == 'succeeded') {
-						let sql = "SELECT `id`, `email` FROM `users` WHERE `id` LIKE '" + req.body.userId + "';"
+						let sql = "SELECT `id`, `email` FROM `users` WHERE `id` LIKE '" + req.body.token + "';"
 						database.sendQuery(sql, function (err, results) {
 							if (err) throw err;
 							if (results.length > 0) {
 								console.log(myDate)
-								let sql = "INSERT INTO orders (userId, price, status, address, time, createdAt, updatedAt) VALUES ('" + req.body.userId + "', '" + req.body.totalPrice + "', 1, '" + req.body.address.replace("'", "''") + "', '" + moment(new Date()).format("YYYY-MM-DD") + " " + time +  "', '" + myDate +  "', '" + myDate +  "');"
+								let sql = "INSERT INTO orders (userId, price, status, address, time, createdAt, updatedAt) VALUES ('" + req.body.token + "', '" + req.body.totalPrice + "', 1, '" + req.body.address.replace("'", "''") + "', '" + moment(new Date()).format("YYYY-MM-DD") + " " + time +  "', '" + myDate +  "', '" + myDate +  "');"
 								database.sendQuery(sql, function (err, results) {
 									if (err) {
 										console.log(err)
@@ -88,14 +88,6 @@ router.post('/', function (req, res, next) {
 			})
 		}
 	})
-});
-
-router.get('/stripe', function (req, res, next) {
-	const event_json = JSON.parse(req.body);
-	console.log(event_json)
-	// Do something with event_json
-
-	response.send(200);
 });
 
 module.exports = router;

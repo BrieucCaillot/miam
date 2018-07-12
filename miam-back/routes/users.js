@@ -18,14 +18,14 @@ let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 // 	}
 // });
 
-router.post('/logout', function (req, res, next) {
-	if (sessionData != undefined) {
-		sessionData = undefined
-	}
-	res.json({
-		logout: true
-	})
-});
+// router.post('/logout', function (req, res, next) {
+// 	if (sessionData != undefined) {
+// 		sessionData = undefined
+// 	}
+// 	res.json({
+// 		logout: true
+// 	})
+// });
 
 router.post('/signin', function (req, res, next) {
 	if (!req.body.id == "") {
@@ -33,19 +33,21 @@ router.post('/signin', function (req, res, next) {
 			connected: true,
 		})
 	} else {
-		let sql = 'SELECT `id`, `firstname`, `email`, `password` FROM `users` WHERE `email` LIKE "' + req.body.email + '";';
+		let sql = 'SELECT `id`, `firstname`, `lastname`, `email`, `password` FROM `users` WHERE `email` LIKE "' + req.body.email + '";';
 		database.sendQuery(sql, function (err, results) {
 			if (err) throw err;
 			if (results.length > 0) {
 				if (req.body.password.length > 0) {
 					bcrypt.compare(req.body.password, results[0].password).then((password) => {
 						if (password === true) {
-							// req.session.token = results[0].id;
 							console.log('Connexion worked out - Good password')
-							console.log('results', results[0].id)
 							res.json({
+								type: 'success',
 								connected: true,
-								token: results[0].id
+								token: results[0].id,
+								firstname: results[0].firstname,
+								lastname: results[0].lastname,
+								email: results[0].email,
 							})
 						} else if (password === false) {
 							res.json({
@@ -99,9 +101,13 @@ router.post('/signup', function (req, res, next) {
 										} else {
 											// req.session.token = results[0].id;
 											res.json({
-												connected: true,
+												type: 'success',
 												message: 'Bravo, vous êtes maintenant inscrit ! 😊',
-												token: results[0].id
+												connected: true,
+												token: results[0].id,
+												firstname: results[0].firstname,
+												lastname: results[0].lastname,
+												email: results[0].email,
 											})
 										}
 									})
@@ -132,17 +138,16 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.post('/modify', function (req, res, next) {
-	if (sessionData != undefined) {
-		let sql = "SELECT `password` FROM users WHERE id = '" + sessionData.token + "' "
+	if (!req.body.id == "") {
+		let sql = "SELECT `password` FROM users WHERE id = '" + req.body.id + "' "
 		database.sendQuery(sql, function (err, results) {
 			if (err) {
 				console.log(err)
 			} else {
-				console.log('lol')
 				if (bcrypt.compareSync(req.body.oldpassword, results[0].password)) {
 					if (req.body.newpassword === req.body.renewpassword) {
 						let hash = bcrypt.hashSync(req.body.newpassword, 10);
-						let sql = 'UPDATE `users` SET `firstname` = "' + req.body.firstname + '", `lastname` = "' + req.body.lastname + '", `email` = "' + req.body.email + '", `password` = "' + hash + '", `updatedAt` = "' + myDate + '" WHERE `id` = "' + sessionData.token + '" ';
+						let sql = 'UPDATE `users` SET `firstname` = "' + req.body.firstname + '", `lastname` = "' + req.body.lastname + '", `email` = "' + req.body.email + '", `password` = "' + hash + '", `updatedAt` = "' + myDate + '" WHERE `id` = "' + req.body.id  + '" ';
 						database.sendQuery(sql, function (err, results) {
 							if (err) {
 								console.log(err)
@@ -172,10 +177,26 @@ router.post('/modify', function (req, res, next) {
 	}
 });
 
-router.get('/modify', function (req, res, next) {
-	console.log(sessionData.token)
-	if (sessionData != undefined) {
-		let sql = 'SELECT * FROM `users` WHERE `id` = "' + sessionData.token + '";';
+// router.get('/modify', function (req, res, next) {
+// 	console.log(sessionData.token)
+// 	if (sessionData != undefined) {
+// 		let sql = 'SELECT * FROM `users` WHERE `id` = "' + sessionData.token + '";';
+// 		database.sendQuery(sql, function (err, results) {
+// 			if (err) {
+// 				console.log(err)
+// 			} else {
+// 				res.json(results)
+// 			}
+// 		})
+// 	} else {
+// 		res.json('Nope')
+// 	}
+//
+// });
+
+router.post('/orders', function (req, res, next) {
+	if (!req.body.id == "") {
+		let sql = 'SELECT * FROM `orders` WHERE `userId` = "' + req.body.id + '";';
 		database.sendQuery(sql, function (err, results) {
 			if (err) {
 				console.log(err)
@@ -186,27 +207,6 @@ router.get('/modify', function (req, res, next) {
 	} else {
 		res.json('Nope')
 	}
-
 });
 
-router.get('/orders', function (req, res, next) {
-	console.log(sessionData.token)
-	if (sessionData != undefined) {
-		let sql = 'SELECT * FROM `orders` WHERE `userId` = "' + sessionData.token + '";';
-		database.sendQuery(sql, function (err, results) {
-			if (err) {
-				console.log(err)
-			} else {
-				res.json(results)
-			}
-		})
-	} else {
-		res.json('Nope')
-	}
-});
-module.exports = {
-	sessionData : "Bonjour"
-}
 module.exports = router;
-
-// @TODO EXPORT sessionData

@@ -128,7 +128,8 @@
 		methods: {
 			...mapActions([
 				'checkoutValidateAction',
-				'checkoutConfirmedAction'
+				'checkoutConfirmedAction',
+                'resetCardAction'
 			]),
 			resetDelivery() {
 				this.checkoutValidateAction(false)
@@ -139,11 +140,11 @@
 			},
 			sendToken() {
 				this.$http.post(`${process.env.URL_DEV}checkout`, {
+					token: this.user.token,
 					totalPrice: this.totalPrice,
 					stripeToken: this.stripeToken.id,
 					time: this.delivery.time,
-					address: this.delivery.address,
-					userId: this.user.token
+					address: this.delivery.address
 				})
 					.then((response) => {
 						this.$notify({
@@ -153,6 +154,8 @@
 							text: response.data.message
 						});
 						if (response.data.type == 'success') {
+							this.resetCardAction([])
+							this.sendTokenAction("")
 							this.checkoutConfirmedAction(true)
 						}
 					})
