@@ -107,6 +107,7 @@
 			]),
 			sendForm() {
 				this.$http.post(`${process.env.URL_DEV}user/signin`, {
+					id: this.user.token,
 					email: this.email,
 					password: this.password,
 				})
@@ -114,7 +115,7 @@
 							this.errors = []
 							if (response.data.connected === true) {
 								let user = {
-									connected: true,
+									connected: response.data.connected,
 									token: response.data.token
 								}
 								this.userConnectedAction(user)
@@ -141,11 +142,10 @@
 					})
 			},
 			checkConnected() {
-				// @TODO NOT WORKING
-				// if (this.$store.getters.user.connected) {
-                console.log(this.user.connected)
-                console.log(this.$store.getters.user.connected)
-				if (this.user.connected) {
+				console.log(this.user.connected)
+				console.log(!this.user.token == "")
+				console.log(this.user)
+				if (this.user.connected && !this.user.token == "") {
 					this.$router.push({name: 'Modify'})
 				} else {
 					this.$router.push({name: 'SignIn'})

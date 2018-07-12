@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const state = {
 	user: {
 		connected: false,
-		token: ''
+		token: ""
 	},
 	productCategories: [],
 	products: [],

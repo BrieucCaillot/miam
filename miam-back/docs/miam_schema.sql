@@ -28,7 +28,6 @@ CREATE TABLE `users` (
 	`lastname` varchar(191) NOT NULL,
 	`email` varchar(191) NOT NULL UNIQUE,
 	`password` varchar(191) NOT NULL,
-	`ordersId` int,
 	`createdAt` DATETIME NOT NULL,
 	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)

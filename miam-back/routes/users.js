@@ -4,20 +4,19 @@ var moment = require('moment');
 var router = express.Router();
 var database = require('../services/database.js');
 
-let sessionData;
 let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 
-router.get('/test', function (req, res, next) {
-	if (sessionData != undefined) {
-		res.json({
-			sessionData: sessionData
-		})
-	} else {
-		res.json({
-			message: 'Not connected'
-		})
-	}
-});
+// router.get('/test', function (req, res, next) {
+// 	if (sessionData != undefined) {
+// 		res.json({
+// 			sessionData: sessionData
+// 		})
+// 	} else {
+// 		res.json({
+// 			message: 'Not connected'
+// 		})
+// 	}
+// });
 
 router.post('/logout', function (req, res, next) {
 	if (sessionData != undefined) {
@@ -29,27 +28,24 @@ router.post('/logout', function (req, res, next) {
 });
 
 router.post('/signin', function (req, res, next) {
-	if (sessionData != undefined) {
+	if (!req.body.id == "") {
 		res.json({
 			connected: true,
-			token: sessionData.token
 		})
 	} else {
 		let sql = 'SELECT `id`, `firstname`, `email`, `password` FROM `users` WHERE `email` LIKE "' + req.body.email + '";';
 		database.sendQuery(sql, function (err, results) {
 			if (err) throw err;
 			if (results.length > 0) {
-				console.log(req.session)
 				if (req.body.password.length > 0) {
 					bcrypt.compare(req.body.password, results[0].password).then((password) => {
 						if (password === true) {
-							sessionData = req.session;
-							sessionData.token = results[0].id;
+							// req.session.token = results[0].id;
 							console.log('Connexion worked out - Good password')
-							console.log(sessionData.token)
+							console.log('results', results[0].id)
 							res.json({
 								connected: true,
-								token: sessionData.token
+								token: results[0].id
 							})
 						} else if (password === false) {
 							res.json({
@@ -76,11 +72,10 @@ router.post('/signin', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res, next) {
-	if (sessionData != undefined) {
+	if (!req.body.id == "") {
 		res.json({
 			connected: true,
 			message: 'Vous êtes déja inscrit ! 😊',
-			token: sessionData.token
 		})
 	} else {
 		let regExpEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
@@ -102,12 +97,11 @@ router.post('/signup', function (req, res, next) {
 										if (err) {
 											console.log(err)
 										} else {
-											sessionData = req.session;
-											sessionData.token = results[0].id;
+											// req.session.token = results[0].id;
 											res.json({
 												connected: true,
 												message: 'Bravo, vous êtes maintenant inscrit ! 😊',
-												token: sessionData.token
+												token: results[0].id
 											})
 										}
 									})

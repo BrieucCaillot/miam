@@ -143,6 +143,7 @@
 			]),
 			sendForm() {
 				this.$http.post(`${process.env.URL_DEV}user/signup`, {
+					id: this.user.token,
 					firstname: this.firstname,
 					lastname: this.lastname,
 					email: this.email,
@@ -180,11 +181,7 @@
 					})
 			},
 			checkConnected() {
-				// @TODO NOT WORKING
-				// if (this.$store.getters.user.connected) {
-				console.log(this.user.connected)
-				console.log(this.$store.getters.user.connected)
-				if (this.user.connected) {
+				if (this.user.connected && !this.user.token == "") {
                     this.$router.push({name: 'Modify'})
                 } else {
 					this.$router.push({name: 'SignUp'})

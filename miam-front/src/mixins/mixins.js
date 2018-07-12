@@ -16,27 +16,27 @@ const mixins = {
 			'removeQuantityAction',
 			'showCardAction'
 		]),
-		checkSession() {
-			this.$http.get(`${process.env.URL_DEV}user/test`)
-				.then((response) => {
-					if (response.data.sessionData) {
-						let user = {
-							connected: true,
-							token: response.data.sessionData.token
-						}
-						this.userConnectedAction(user)
-					} else {
-						let user = {
-							connected: false,
-							token: ''
-						}
-						this.userConnectedAction(user)
-					}
-				})
-				.catch((error) => {
-					console.log(error)
-				})
-		},
+		// checkSession() {
+		// 	this.$http.get(`${process.env.URL_DEV}user/test`)
+		// 		.then((response) => {
+		// 			if (response.data.sessionData) {
+		// 				let user = {
+		// 					connected: true,
+		// 					token: response.data.sessionData.token
+		// 				}
+		// 				this.userConnectedAction(user)
+		// 			} else {
+		// 				let user = {
+		// 					connected: false,
+		// 					token: ''
+		// 				}
+		// 				this.userConnectedAction(user)
+		// 			}
+		// 		})
+		// 		.catch((error) => {
+		// 			console.log(error)
+		// 		})
+		// },
 		addProduct(id, image, name, price) {
 			let product = {
 				id: id,
@@ -94,7 +94,7 @@ const mixins = {
 		},
 	},
 	mounted() {
-		this.checkSession()
+		// this.checkSession()
 		this.scrollTop()
 	}
 }

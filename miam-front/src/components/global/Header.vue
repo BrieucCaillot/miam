@@ -8,7 +8,7 @@
                     </router-link>
                 </div>
                 <div class="level-right">
-                    <router-link v-if="user.connected"
+                    <router-link v-if='user.connected && !this.user.token == ""'
                                  class="header__connect level-item text__is-white p-rel text__ft-1"
                                  :to="{name: 'Modify'}">
                         Mon profil

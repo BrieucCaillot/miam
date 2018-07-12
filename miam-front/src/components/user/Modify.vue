@@ -146,29 +146,15 @@
 		},
 		methods: {
 			...mapActions([
-				'userConnectedAction'
+				'userConnectedAction',
 			]),
 			logout() {
-				this.$http.post(`${process.env.URL_DEV}user/logout`, {
-					sessionData: undefined
-				})
-					.then(response => {
-						this.errors = []
-						this.responses = response.data.message
-						if (response.data.logout == true) {
-							let user = {
-								connected: false,
-								token: '',
-							}
-							this.userConnectedAction(user)
-							this.$router.push({name: 'Home'})
-						}
-					})
-					.catch((error) => {
-						this.errors = []
-						this.errors.push(error)
-						console.log(error)
-					})
+				let user = {
+					connected: false,
+					token: '',
+				}
+				this.userConnectedAction(user)
+				this.$router.push({name: 'Home'})
 			},
 			modifyUser() {
 				this.$http.post(`${process.env.URL_DEV}user/modify`, {
@@ -210,11 +196,7 @@
 					})
 			},
 			checkConnected() {
-				// @TODO NOT WORKING
-				// if (this.$store.getters.user.connected) {
-				console.log(this.user.connected)
-				console.log(this.$store.getters.user.connected)
-				if (this.user.connected) {
+				if (this.user.connected && !this.user.token == "") {
 					this.$router.push({name: 'Modify'})
 					this.getUserInfos()
 				} else {
