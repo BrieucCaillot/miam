@@ -63,8 +63,6 @@ CREATE TABLE `newsletters` (
 
 ALTER TABLE `foods` ADD CONSTRAINT `foods_fk0` FOREIGN KEY (`foodCategoryId`) REFERENCES `foodcategories`(`id`);
 
-ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`ordersId`) REFERENCES `orders`(`id`);
-
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk0` FOREIGN KEY (`userId`) REFERENCES `users`(`id`);
 
 ALTER TABLE `images` ADD CONSTRAINT `images_fk0` FOREIGN KEY (`foodsId`) REFERENCES `foods`(`id`);
