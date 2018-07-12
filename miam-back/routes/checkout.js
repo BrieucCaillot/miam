@@ -12,12 +12,6 @@ let myDate = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 router.post('/', function (req, res, next) {
 	let stripeToken = req.body.stripeToken;
 	let time = req.body.time.split("h").join(':')
-	// console.log(stripeToken)
-	// console.log(req.body.totalPrice)
-	// console.log(req.body.totalPrice.split(".").join(''))
-	// console.log(req.body.address);
-	// console.log(req.body.address.replace("'", "''"))
-	// console.log(time)
 	let sql = "SELECT `id`, `email` FROM `users` WHERE `id` LIKE '" + req.body.token + "';"
 	database.sendQuery(sql, function (err, results) {
 		if (err) throw err;

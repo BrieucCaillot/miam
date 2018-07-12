@@ -16,7 +16,6 @@ var transporter = nodemailer.createTransport({
 });
 
 router.post('/', function(req, res, next) {
-	// console.log(req.body.email)
 	let regExpEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
 	let sql = 'SELECT `email` FROM `newsletters` WHERE `email` LIKE "' + req.body.email + '";';
 	database.sendQuery(sql, function (err, results) {
@@ -28,12 +27,21 @@ router.post('/', function(req, res, next) {
 					if (err) {
 						console.log(err)
 					} else {
-						var mailOptions = {
-							from: 'miam',
-							to: req.body.email,
-							subject: 'miam - Inscription newsletter',
-							html: '<p>Bonjour Madame, Monsieur,</p><br><p>Vous êtes maintenant inscrit à la newsletter de miam 🥕</p><br><p>Cordialement, l\'équipe de miam 🖖</p>'
-						};
+						if (!req.body.username == "") {
+							var mailOptions = {
+								from: 'miam',
+								to: req.body.email,
+								subject: 'miam - Inscription newsletter',
+								html: `<p>Hello ${req.body.username},</p><br><p>Tu es maintenant inscrit à la newsletter de miam 🥕</p><br><p>Cordialement, l\'équipe de miam 🖖</p>`
+							};
+						} else {
+							var mailOptions = {
+								from: 'miam',
+								to: req.body.email,
+								subject: 'miam - Inscription newsletter',
+								html: `<p>Bonjour Madame, Monsieur,</p><br><p>Vous êtes maintenant inscrit à la newsletter de miam 🥕</p><br><p>Cordialement, l\'équipe de miam 🖖</p>`
+							};
+						}
 
 						transporter.sendMail(mailOptions, function (error, info) {
 							if (error) {

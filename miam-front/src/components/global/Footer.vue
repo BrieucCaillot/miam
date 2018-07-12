@@ -24,7 +24,8 @@
                     <div class="level pd-b1">
                         <div class="level-left">
                             <div class="level-item text__ft-1">
-                                <a href="mailto:hellomiamfood@gmail.com" class="text__is-white">hellomiamfood@gmail.com</a>
+                                <a href="mailto:hellomiamfood@gmail.com"
+                                   class="text__is-white">hellomiamfood@gmail.com</a>
                             </div>
                         </div>
                     </div>
@@ -126,6 +127,9 @@
 </template>
 
 <script>
+
+	import {mapGetters} from 'vuex'
+
 	export default {
 		name: 'Footer',
 		data() {
@@ -134,11 +138,17 @@
 				email: ''
 			}
 		},
+        computed: {
+            ...mapGetters([
+            	'user'
+            ])
+        },
 		methods: {
 			sendMail() {
 				let regExpEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
 				if (this.email.match(regExpEmail)) {
 					this.$http.post(`${process.env.URL_DEV}newsletter`, {
+						username: this.user.firstname,
 						email: this.email,
 					})
 						.then((response) => {
@@ -162,7 +172,7 @@
 						type: 'warn',
 						text: 'L\'email rentré n\'est pas valide'
 					});
-                }
+				}
 			},
 		}
 	}
