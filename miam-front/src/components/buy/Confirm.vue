@@ -9,8 +9,8 @@
                             <div class="level">
                                 <div class="level-left">
                                     <router-link class="text__is-tertiary page-content-info__back p-rel pd-l3"
-                                                 :to="{name: 'BuyStep1'}">
-                                        Retour à la validation
+                                                 :to="{name: 'Home'}">
+                                        Retour à la carte du jour
                                     </router-link>
                                 </div>
                             </div>
